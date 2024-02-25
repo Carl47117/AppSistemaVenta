@@ -15,7 +15,7 @@ export class MenuService {
 
   lista(): Observable<ResponseApi> {
     return this.http.get<ResponseApi>(
-      '${this.urlApi}Lista?idUsuario=${idUsuario}'
+      `${this.urlApi}Lista?idUsuario=${idUsuario}`
     );
   }
 }

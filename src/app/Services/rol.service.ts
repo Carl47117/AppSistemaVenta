@@ -13,7 +13,7 @@ export class RolService {
 
   constructor(private http: HttpClient) {}
 
-  lista(idUsuario: number): Observable<ResponseApi> {
-    return this.http.get<ResponseApi>('${this.urlApi}Lista');
+  lista(): Observable<ResponseApi> {
+    return this.http.get<ResponseApi>(`${this.urlApi}Lista`);
   }
 }
