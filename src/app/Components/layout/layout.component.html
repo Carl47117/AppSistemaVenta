@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <h1>Sistema Venta</h1>
-    <button mat-icon-button (click)="(sidenav.toggle)">
+    <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon> Menu </mat-icon>
     </button>
   </mat-toolbar-row>
@@ -26,7 +26,7 @@
       </mat-list-item>
 
       <mat-list-item routerLink="/pages/venta">
-        <mat-icon mat-list-icon>currency</mat-icon>
+        <mat-icon mat-list-icon>currency_exchange</mat-icon>
         <div mat-line>Venta</div>
       </mat-list-item>
 

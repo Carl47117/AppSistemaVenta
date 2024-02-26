@@ -43,7 +43,7 @@ export class UsuarioComponent implements OnInit, AfterViewInit {
         if (data.status) this.dataListaUsuarios.data = data.value;
         else
           this._utilidadServicio.MostrarAlerta(
-            'no se encontraron datos',
+            'No se encontraron datos',
             'Ops'
           );
       },
@@ -88,7 +88,7 @@ export class UsuarioComponent implements OnInit, AfterViewInit {
 
   eliminarUsuario(usuario: Usuario) {
     Swal.fire({
-      title: 'DeseaEliminar el usuario?',
+      title: 'Desea eliminar el usuario?',
       text: usuario.nombreCompleto,
       icon: 'warning',
       confirmButtonColor: '#3058d6',
@@ -98,7 +98,7 @@ export class UsuarioComponent implements OnInit, AfterViewInit {
       cancelButtonText: 'No, volver',
     }).then((resultado) => {
       if (resultado.isConfirmed) {
-        this._usuarioServio.eliminar(usuario.idUsuario).subscribe({
+        this._usuarioServio.eliminar(usuario).subscribe({
           next: (data) => {
             if (data.status) {
               this._utilidadServicio.MostrarAlerta(

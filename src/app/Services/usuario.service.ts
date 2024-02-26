@@ -31,7 +31,7 @@ export class UsuarioService {
     return this.http.put<ResponseApi>(`${this.urlApi}Editar`, request);
   }
 
-  eliminar(id: number): Observable<ResponseApi> {
-    return this.http.delete<ResponseApi>(`${this.urlApi}Eliminar/${id}`);
+  eliminar(request: Usuario): Observable<ResponseApi> {
+    return this.http.post<ResponseApi>(`${this.urlApi}Eliminar`, request);
   }
 }

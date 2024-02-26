@@ -7,10 +7,10 @@ import { ResponseApi } from '../Interfaces/response-api';
 import { Producto } from '../Interfaces/producto';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: `root`,
 })
 export class ProductoService {
-  private urlApi: string = enviroment.endpoint + 'Producto/';
+  private urlApi: string = enviroment.endpoint + `Producto/`;
 
   constructor(private http: HttpClient) {}
 
@@ -26,7 +26,7 @@ export class ProductoService {
     return this.http.put<ResponseApi>(`${this.urlApi}Editar`, request);
   }
 
-  eliminar(id: number): Observable<ResponseApi> {
-    return this.http.delete<ResponseApi>(`${this.urlApi}Eliminar/${id}`);
+  eliminar(request: Producto): Observable<ResponseApi> {
+    return this.http.post<ResponseApi>(`${this.urlApi}Eliminar`, request);
   }
 }
