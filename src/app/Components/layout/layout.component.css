@@ -1,0 +1,11 @@
+.wrapper-menu {
+  padding-right: 0;
+  padding-left: 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper-menu > * {
+  margin: 0;
+}
