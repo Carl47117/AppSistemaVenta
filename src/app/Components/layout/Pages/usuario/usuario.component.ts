@@ -22,7 +22,7 @@ export class UsuarioComponent implements OnInit, AfterViewInit {
   columnasTabla: string[] = [
     'nombreCompleto',
     'correo',
-    'rolDescripcion',
+    'rolDescription',
     'estado',
     'acciones',
   ];

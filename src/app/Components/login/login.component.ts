@@ -45,7 +45,7 @@ export class LoginComponent {
           this.router.navigate(['pages']);
         } else
           this._utilidadServicio.MostrarAlerta(
-            'No se encontraron coiincidencias',
+            'No se encontraron coincidencias',
             'Ops'
           );
       },
