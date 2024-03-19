@@ -12,7 +12,6 @@ import * as XLSX from 'xlsx';
 import { Reporte } from '../../../../Interfaces/reporte';
 import { VentaService } from '../../../../Services/venta.service';
 import { UtilidadService } from '../../../../Reutilizable/utilidad.service';
-
 export const MY_DATA_FORMATS = {
   parse: {
     dateInput: 'DD/MM/YYYY',

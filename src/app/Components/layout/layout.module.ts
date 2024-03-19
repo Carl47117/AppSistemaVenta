@@ -12,6 +12,8 @@ import { SharedModule } from '../../Reutilizable/shared/shared.module';
 import { ModalUsuarioComponent } from './Modales/modal-usuario/modal-usuario.component';
 import { ModalProductoComponent } from './Modales/modal-producto/modal-producto.component';
 import { ModalDetalleVentaComponent } from './Modales/modal-detalle-venta/modal-detalle-venta.component';
+import { ServiceTicketComponent } from './Pages/service-ticket/service-ticket.component';
+import { ModalServiceTicketComponent } from './Modales/modal-service-ticket/modal-service-ticket.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { ModalDetalleVentaComponent } from './Modales/modal-detalle-venta/modal-
     ModalUsuarioComponent,
     ModalProductoComponent,
     ModalDetalleVentaComponent,
+    ServiceTicketComponent,
+    ModalServiceTicketComponent,
   ],
   imports: [CommonModule, LayoutRoutingModule, SharedModule],
 })
