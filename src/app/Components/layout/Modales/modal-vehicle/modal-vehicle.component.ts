@@ -71,19 +71,29 @@ export class ModalVehicleComponent implements OnInit {
     });
   }
   createVehicles(_venta: VehicleInfo) {
-    this.dialog.open(ModalVehicleEditComponent, {
-      data: _venta,
-      disableClose: true,
-      width: '1200px',
-    });
+    this.dialog
+      .open(ModalVehicleEditComponent, {
+        data: _venta,
+        disableClose: true,
+        width: '1200px',
+      })
+      .afterClosed()
+      .subscribe((resultado) => {
+        if (resultado === 'true') this.getVehicles();
+      });
   }
 
   editVehicle(_venta: VehicleInfo) {
-    this.dialog.open(ModalVehicleEditComponent, {
-      data: _venta,
-      disableClose: true,
-      width: '1200px',
-    });
+    this.dialog
+      .open(ModalVehicleEditComponent, {
+        data: _venta,
+        disableClose: true,
+        width: '1200px',
+      })
+      .afterClosed()
+      .subscribe((resultado) => {
+        if (resultado === 'true') this.getVehicles();
+      });
   }
   ngOnInit(): void {}
 }

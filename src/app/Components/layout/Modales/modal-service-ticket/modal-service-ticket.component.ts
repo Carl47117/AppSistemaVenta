@@ -32,7 +32,7 @@ export class ModalServiceTicketComponent implements OnInit {
     private _utilidadService: UtilidadService
   ) {
     this.formClient = this.fb.group({
-      idClient: ['', Validators.required],
+      idClient: ['-1'],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       clientIdentification: ['', Validators.required],
@@ -82,6 +82,7 @@ export class ModalServiceTicketComponent implements OnInit {
         complete: () => {
           this.bloquearBotonRegistrar = false;
         },
+
         error: (e) => {},
       });
     }

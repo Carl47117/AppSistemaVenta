@@ -129,24 +129,39 @@ export class ServiceTicketComponent implements OnInit {
     this.getClients();
   }
   clientInformation(_cliente: ClientInfo) {
-    this.dialog.open(ModalServiceTicketComponent, {
-      data: _cliente,
-      disableClose: true,
-      width: '700px',
-    });
+    this.dialog
+      .open(ModalServiceTicketComponent, {
+        data: _cliente,
+        disableClose: true,
+        width: '700px',
+      })
+      .afterClosed()
+      .subscribe((resultado) => {
+        if (resultado === 'true') this.getClients();
+      });
   }
   createClient() {
-    this.dialog.open(ModalServiceTicketComponent, {
-      disableClose: true,
-      width: '700px',
-    });
+    this.dialog
+      .open(ModalServiceTicketComponent, {
+        disableClose: true,
+        width: '700px',
+      })
+      .afterClosed()
+      .subscribe((resultado) => {
+        if (resultado === 'true') this.getClients();
+      });
   }
 
   verDetalleVehiculo(_venta: VehicleInfo) {
-    this.dialog.open(ModalVehicleComponent, {
-      data: _venta,
-      disableClose: true,
-      width: '100%',
-    });
+    this.dialog
+      .open(ModalVehicleComponent, {
+        data: _venta,
+        disableClose: true,
+        width: '100%',
+      })
+      .afterClosed()
+      .subscribe((resultado) => {
+        if (resultado === 'true') this.getClients();
+      });
   }
 }
