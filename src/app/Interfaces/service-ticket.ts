@@ -1,15 +1,14 @@
 import { VehicleInfo } from './VehicleInfo';
-import { ContactInfo } from './contact-info';
 import { InsuranceAuthorizationPaymentInfo } from './insurance-authorization-payment-info';
 import { MaintenanceHistory } from './maintenance-history';
 import { ProblemDescription } from './problem-description';
 
 export interface ServiceTicket {
-  fullName?: string;
+  firstName?: string;
   phoneNumber?: string;
   emailAddress?: string;
   physicalAddress?: string;
-  carMake?: string;
+  carMakerr?: string;
   carModel?: string;
   carYear?: number;
   vin?: string;

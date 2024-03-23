@@ -13,7 +13,7 @@ import { UtilidadService } from '../../Reutilizable/utilidad.service';
 })
 export class LayoutComponent {
   listaMenus: Menu[] = [];
-  correoUsuario: string = '';
+  userEmail: string = '';
   rolUsuario: string = '';
 
   constructor(
@@ -26,10 +26,10 @@ export class LayoutComponent {
     const usuario = this._utilidadService.ObtenerSesionUsuario();
 
     if (usuario != null) {
-      this.correoUsuario = usuario.correo;
+      this.userEmail = usuario.email;
       this.rolUsuario = usuario.rolDescription;
 
-      this._menuServicio.lista(usuario.idUsuario).subscribe({
+      this._menuServicio.lista(usuario.idUser).subscribe({
         next: (data) => {
           if (data.status) this.listaMenus = data.value;
         },

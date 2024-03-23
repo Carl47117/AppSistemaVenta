@@ -30,11 +30,11 @@ export class ModalUsuarioComponent implements OnInit {
     private _utilidadServicio: UtilidadService
   ) {
     this.formularioUsuario = this.fb.group({
-      nombreCompleto: ['', Validators.required],
-      correo: ['', Validators.required],
+      firstName: ['', Validators.required],
+      email: ['', Validators.required],
       idRol: ['', Validators.required],
-      clave: ['', Validators.required],
-      esActivo: ['1', Validators.required],
+      password: ['', Validators.required],
+      Active: ['1', Validators.required],
     });
 
     if (this.datosUsuario != null) {
@@ -52,24 +52,24 @@ export class ModalUsuarioComponent implements OnInit {
   ngOnInit(): void {
     if (this.datosUsuario != null) {
       this.formularioUsuario.patchValue({
-        nombreCompleto: this.datosUsuario.nombreCompleto,
-        correo: this.datosUsuario.correo,
+        firstName: this.datosUsuario.firstName,
+        email: this.datosUsuario.email,
         idRol: this.datosUsuario.idRol,
-        clave: this.datosUsuario.clave,
-        esActivo: this.datosUsuario.esActivo.toString(),
+        password: this.datosUsuario.password,
+        Active: this.datosUsuario.Active.toString(),
       });
     }
   }
 
   guardarEditar_Usuario() {
     const _usuario: Usuario = {
-      idUsuario: this.datosUsuario == null ? 0 : this.datosUsuario.idUsuario,
-      nombreCompleto: this.formularioUsuario.value.nombreCompleto,
-      correo: this.formularioUsuario.value.correo,
+      idUser: this.datosUsuario == null ? 0 : this.datosUsuario.idUser,
+      firstName: this.formularioUsuario.value.firstName,
+      email: this.formularioUsuario.value.email,
       idRol: this.formularioUsuario.value.idRol,
       rolDescription: '',
-      clave: this.formularioUsuario.value.clave,
-      esActivo: parseInt(this.formularioUsuario.value.esActivo),
+      password: this.formularioUsuario.value.password,
+      Active: parseInt(this.formularioUsuario.value.Active),
     };
     if (this.datosUsuario == null) {
       this._usuarioServicio.guardar(_usuario).subscribe({

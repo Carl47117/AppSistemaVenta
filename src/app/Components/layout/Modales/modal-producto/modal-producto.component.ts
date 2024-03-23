@@ -29,11 +29,11 @@ export class ModalProductoComponent implements OnInit {
     private _utilidadServicio: UtilidadService
   ) {
     this.formularioProducto = this.fb.group({
-      nombre: ['', Validators.required],
-      idCategoria: ['', Validators.required],
+      name: ['', Validators.required],
+      IdProductCategory: ['', Validators.required],
       stock: ['', Validators.required],
       precio: ['', Validators.required],
-      esActivo: ['', Validators.required],
+      Active: ['', Validators.required],
     });
 
     if (this.datosProducto != null) {
@@ -52,25 +52,25 @@ export class ModalProductoComponent implements OnInit {
   ngOnInit(): void {
     if (this.datosProducto != null) {
       this.formularioProducto.patchValue({
-        nombre: this.datosProducto.nombre,
-        idCategoria: this.datosProducto.idCategoria,
+        name: this.datosProducto.name,
+        IdProductCategory: this.datosProducto.IdProductCategory,
         stock: this.datosProducto.stock,
         precio: this.datosProducto.precio,
-        esActivo: this.datosProducto.esActivo.toString(),
+        Active: this.datosProducto.Active.toString(),
       });
     }
   }
 
   guardarEditar_Producto() {
     const _producto: Producto = {
-      idProducto:
-        this.datosProducto == null ? 0 : this.datosProducto.idProducto,
-      nombre: this.formularioProducto.value.nombre,
-      idCategoria: this.formularioProducto.value.idCategoria,
-      descripcionCategoria: '',
+      IdProductItem:
+        this.datosProducto == null ? 0 : this.datosProducto.IdProductItem,
+      name: this.formularioProducto.value.name,
+      IdProductCategory: this.formularioProducto.value.IdProductCategory,
+      CategoryDescription: '',
       precio: this.formularioProducto.value.precio,
       stock: this.formularioProducto.value.stock,
-      esActivo: parseInt(this.formularioProducto.value.esActivo),
+      Active: parseInt(this.formularioProducto.value.Active),
     };
 
     if (this.datosProducto == null) {

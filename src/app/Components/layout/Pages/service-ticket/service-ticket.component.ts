@@ -6,7 +6,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { ServiceTicketService } from '../../../../Services/service-tikcet.service';
 import { UtilidadService } from '../../../../Reutilizable/utilidad.service';
 import { ServiceTicket } from '../../../../Interfaces/service-ticket';
-import { ContactInfo } from '../../../../Interfaces/contact-info';
 import Swal from 'sweetalert2';
 
 import { response } from 'express';
@@ -20,43 +19,42 @@ import { ProblemDescription } from '../../../../Interfaces/problem-description';
 
 import { ModalServiceTicketComponent } from '../../Modales/modal-service-ticket/modal-service-ticket.component';
 import { MatDialog } from '@angular/material/dialog';
-
+import { ModalVehicleComponent } from '../../Modales/modal-vehicle/modal-vehicle.component';
+import { ClientInfo } from '../../../../Interfaces/client-info';
+import { ClientInfoService } from '../../../../Services/client-info.service';
 @Component({
   selector: 'app-service-ticket',
   templateUrl: './service-ticket.component.html',
   styleUrl: './service-ticket.component.css',
 })
 export class ServiceTicketComponent implements OnInit {
-  listContactInfo: ContactInfo[] = [];
-  listVehicleInfo: VehicleInfo[] = [];
   listProblemDescription: ProblemDescription[] = [];
-  listServiceTicket: ServiceTicket[] = [];
+  listclientInfo: ClientInfo[] = [];
   bloquearBotonRegistrar: boolean = false;
 
   formServiceTicket: FormGroup;
   columnasTabla: string[] = [
-    'fullName',
+    'firstName',
     'phoneNumber',
     'emailAddress',
+    'physicalAddress',
     'accion',
   ];
-  dataListServiceTicket = new MatTableDataSource(this.listServiceTicket);
-  dataInicio: ServiceTicket[] = [];
-  datosListaServiceTicket = new MatTableDataSource(this.dataInicio);
+  datosListaClientInfo = new MatTableDataSource(this.listclientInfo);
   @ViewChild(MatPaginator) paginacionTabla!: MatPaginator;
   constructor(
     private fb: FormBuilder,
-    private _productoService: ServiceTicketService,
+    private _clientInfoService: ClientInfoService,
     private _utilidadService: UtilidadService,
     private dialog: MatDialog
   ) {
     this.formServiceTicket = this.fb.group({
-      fullName: ['', Validators.required],
+      firstName: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       emailAddress: ['', Validators.required],
       physicalAddress: ['', Validators.required],
 
-      carMake: ['', Validators.required],
+      carMakerr: ['', Validators.required],
       carModel: ['', Validators.required],
       carYear: ['', Validators.required],
       vin: ['', Validators.required],
@@ -64,68 +62,52 @@ export class ServiceTicketComponent implements OnInit {
       licensePlate: ['', Validators.required],
       currentMileage: ['', Validators.required],
       maintenanceDetails: ['', Validators.required],
-      issueDescription: ['', Validators.required],
-      dashboardLights: ['', Validators.required],
+      //issueDescription: ['', Validators.required],
+      //dashboardLights: ['', Validators.required],
+    });
+  }
+  getClients() {
+    this._clientInfoService.lista().subscribe({
+      next: (data) => {
+        if (data.status) this.datosListaClientInfo.data = data.value;
+        else
+          this._utilidadService.MostrarAlerta('No se encontraron datos', 'Ops');
+      },
+      error: (e) => {},
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getClients();
+  }
+
   ngAfterViewInit(): void {
-    this.datosListaServiceTicket.paginator = this.paginacionTabla;
+    this.datosListaClientInfo.paginator = this.paginacionTabla;
   }
 
   agregarProductoParaVenta() {
-    const _fullName: string = this.formServiceTicket.value.fullName;
+    const _firstName: string = this.formServiceTicket.value.firstName;
     const _phoneNumber: string = this.formServiceTicket.value.phoneNumber;
     const _emailAddress: string = this.formServiceTicket.value.emailAddress;
     const _physicalAddress: string =
       this.formServiceTicket.value.physicalAddress;
-    const _carMake: string = this.formServiceTicket.value.fullName;
-    const _carModel: string = this.formServiceTicket.value.carModel;
-    const _carYear: number = this.formServiceTicket.value.carYear;
-    const _vin: string = this.formServiceTicket.value.vin;
-    const _licensePlate: string = this.formServiceTicket.value.licensePlate;
-    const _currentMileage: number = this.formServiceTicket.value.currentMileage;
-    const _maintenanceDetails: string =
-      this.formServiceTicket.value.maintenanceDetails;
-    const _issueDescription: string =
-      this.formServiceTicket.value.issueDescription;
-    const _dashboardLights: string =
-      this.formServiceTicket.value.dashboardLights;
 
-    this.listServiceTicket.push({
-      fullName: _fullName,
+    this.listclientInfo.push({
+      firstName: _firstName,
       phoneNumber: _phoneNumber,
       emailAddress: _emailAddress,
       physicalAddress: _physicalAddress,
-      carMake: _carMake,
-      carModel: _carModel,
-      carYear: _carYear,
-      vin: _vin,
-      licensePlate: _licensePlate,
-      currentMileage: _currentMileage,
-      maintenanceDetails: _maintenanceDetails,
-      issueDescription: _issueDescription,
-      dashboardLights: _dashboardLights,
     });
-
-    /* this.listServiceTicket[0].contactInfo = this.listContactInfo;
-
-    this.formServiceTicket.patchValue({
-      producto: '',
-      cantidad: '',
-    });*/
   }
 
   registrarVenta() {
-    if (this.listServiceTicket.length > 0) {
+    if (this.listclientInfo.length > 0) {
       this.bloquearBotonRegistrar = true;
-      const request: ServiceTicket = this.listServiceTicket[0];
+      const request: ClientInfo = this.listclientInfo[0];
 
-      this._productoService.registrar(request).subscribe({
+      this._clientInfoService.registrar(request).subscribe({
         next: (response) => {
           if (response.status) {
-            this.datosListaServiceTicket = response.value;
             Swal.fire({
               icon: 'success',
               title: 'Venta Registrada!',
@@ -143,12 +125,28 @@ export class ServiceTicketComponent implements OnInit {
         error: (e) => {},
       });
     }
+
+    this.getClients();
   }
-  verDetalleVenta(_venta: ServiceTicket) {
+  clientInformation(_cliente: ClientInfo) {
     this.dialog.open(ModalServiceTicketComponent, {
-      data: _venta,
+      data: _cliente,
       disableClose: true,
       width: '700px',
+    });
+  }
+  createClient() {
+    this.dialog.open(ModalServiceTicketComponent, {
+      disableClose: true,
+      width: '700px',
+    });
+  }
+
+  verDetalleVehiculo(_venta: VehicleInfo) {
+    this.dialog.open(ModalVehicleComponent, {
+      data: _venta,
+      disableClose: true,
+      width: '100%',
     });
   }
 }

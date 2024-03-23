@@ -13,9 +13,7 @@ export class MenuService {
 
   constructor(private http: HttpClient) {}
 
-  lista(idUsuario: string): Observable<ResponseApi> {
-    return this.http.get<ResponseApi>(
-      `${this.urlApi}Lista?idUsuario=${idUsuario}`
-    );
+  lista(idUser: string): Observable<ResponseApi> {
+    return this.http.get<ResponseApi>(`${this.urlApi}Lista?idUser=${idUser}`);
   }
 }

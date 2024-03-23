@@ -1,10 +1,10 @@
 export interface VehicleInfo {
-  vehicleId?: number;
-  contactId?: number;
-  carMake?: string;
+  idClient?: number;
+  idVehicle?: string;
+  carMaker?: string;
   carModel?: string;
-  carYear?: number;
+  carYear?: string;
   vin?: string;
-  licensePlate: string;
-  currentMileage?: number;
+  licensePlate?: string;
+  currentMileage?: string;
 }

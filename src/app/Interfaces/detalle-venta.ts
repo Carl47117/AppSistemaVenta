@@ -1,5 +1,5 @@
 export interface DetalleVenta {
-  idProducto: number;
+  IdProductItem: number;
   descripcionProducto: string;
   cantidad: number;
   precioTexto: string;

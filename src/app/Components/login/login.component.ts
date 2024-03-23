@@ -35,8 +35,8 @@ export class LoginComponent {
     this.mostrarLoading = true;
 
     const request: Login = {
-      correo: this.formularioLogin.value.email,
-      clave: this.formularioLogin.value.password,
+      email: this.formularioLogin.value.email,
+      password: this.formularioLogin.value.password,
     };
     this._usuarioServicio.iniciarSesion(request).subscribe({
       next: (data) => {

@@ -20,8 +20,8 @@ import Swal from 'sweetalert2';
 })
 export class UsuarioComponent implements OnInit, AfterViewInit {
   columnasTabla: string[] = [
-    'nombreCompleto',
-    'correo',
+    'firstName',
+    'email',
     'rolDescription',
     'estado',
     'acciones',
@@ -89,7 +89,7 @@ export class UsuarioComponent implements OnInit, AfterViewInit {
   eliminarUsuario(usuario: Usuario) {
     Swal.fire({
       title: 'Desea eliminar el usuario?',
-      text: usuario.nombreCompleto,
+      text: usuario.firstName,
       icon: 'warning',
       confirmButtonColor: '#3058d6',
       confirmButtonText: 'Si, eliminar',

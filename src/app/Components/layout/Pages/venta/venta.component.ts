@@ -46,10 +46,10 @@ export class VentaComponent implements OnInit {
     const valorBuscado =
       typeof busqueda === 'string'
         ? busqueda.toLocaleLowerCase()
-        : busqueda.nombre.toLocaleLowerCase();
+        : busqueda.name.toLocaleLowerCase();
 
     return this.listaProductos.filter((item) =>
-      item.nombre.toLocaleLowerCase().includes(valorBuscado)
+      item.name.toLocaleLowerCase().includes(valorBuscado)
     );
   }
   constructor(
@@ -68,7 +68,7 @@ export class VentaComponent implements OnInit {
         if (data.status) {
           const lista = data.value as Producto[];
           this.listaProductos = lista.filter(
-            (p) => p.esActivo == 1 && p.stock > 9
+            (p) => p.Active == 1 && p.stock > 9
           );
         }
       },
@@ -84,7 +84,7 @@ export class VentaComponent implements OnInit {
   ngOnInit(): void {}
 
   mostrarProducto(producto: Producto): string {
-    return producto.nombre;
+    return producto.name;
   }
 
   productoParaVenta(event: any) {
@@ -96,8 +96,8 @@ export class VentaComponent implements OnInit {
     const _total: number = _cantidad * _precio;
     this.totalPagar = this.totalPagar + _total;
     this.listaProductoParaVenta.push({
-      idProducto: this.productoSeleccionado.idProducto,
-      descripcionProducto: this.productoSeleccionado.nombre,
+      IdProductItem: this.productoSeleccionado.IdProductItem,
+      descripcionProducto: this.productoSeleccionado.name,
       cantidad: _cantidad,
       precioTexto: String(_precio.toFixed(2)),
       totalTexto: String(_total.toFixed(2)),
@@ -115,7 +115,7 @@ export class VentaComponent implements OnInit {
   eliminarProducto(detalle: DetalleVenta) {
     (this.totalPagar = this.totalPagar - parseFloat(detalle.totalTexto)),
       (this.listaProductoParaVenta = this.listaProductoParaVenta.filter(
-        (p) => p.idProducto != detalle.idProducto
+        (p) => p.IdProductItem != detalle.IdProductItem
       ));
     this.datosDetalleVenta = new MatTableDataSource(
       this.listaProductoParaVenta

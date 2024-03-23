@@ -18,16 +18,16 @@
 
     <div class="mat-elevation-z2">
       <table mat-table [dataSource]="dataListaUsuarios">
-        <ng-container matColumnDef="nombreCompleto">
+        <ng-container matColumnDef="firstName">
           <th mat-header-cell *matHeaderCellDef>Nombre Completo</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.nombreCompleto }}
+            {{ element.firstName }}
           </td>
         </ng-container>
 
-        <ng-container matColumnDef="correo">
+        <ng-container matColumnDef="email">
           <th mat-header-cell *matHeaderCellDef>Correo</th>
-          <td mat-cell *matCellDef="let element">{{ element.correo }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
         </ng-container>
 
         <ng-container matColumnDef="rolDescription">
@@ -40,7 +40,7 @@
         <ng-container matColumnDef="estado">
           <th mat-header-cell *matHeaderCellDef>Estado</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.esActivo == 1 ? "Activo" : "No activo" }}
+            {{ element.Active == 1 ? "Activo" : "No activo" }}
           </td>
         </ng-container>
 

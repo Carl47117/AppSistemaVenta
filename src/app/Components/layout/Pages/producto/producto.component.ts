@@ -17,7 +17,7 @@ import Swal from 'sweetalert2';
 })
 export class ProductoComponent implements OnInit, AfterViewInit {
   columnasTabla: string[] = [
-    'nombre',
+    'name',
     'Categoria',
     'stock',
     'precio',
@@ -83,7 +83,7 @@ export class ProductoComponent implements OnInit, AfterViewInit {
   eliminarProducto(producto: Producto) {
     Swal.fire({
       title: 'Desea eliminar el producto?',
-      text: producto.nombre,
+      text: producto.name,
       icon: 'warning',
       confirmButtonColor: '#3058d6',
       confirmButtonText: 'Si, eliminar',

@@ -14,6 +14,8 @@ import { ModalProductoComponent } from './Modales/modal-producto/modal-producto.
 import { ModalDetalleVentaComponent } from './Modales/modal-detalle-venta/modal-detalle-venta.component';
 import { ServiceTicketComponent } from './Pages/service-ticket/service-ticket.component';
 import { ModalServiceTicketComponent } from './Modales/modal-service-ticket/modal-service-ticket.component';
+import { ModalVehicleComponent } from './Modales/modal-vehicle/modal-vehicle.component';
+import { ModalVehicleEditComponent } from './Modales/modal-vehicle-edit/modal-vehicle-edit.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { ModalServiceTicketComponent } from './Modales/modal-service-ticket/moda
     ModalDetalleVentaComponent,
     ServiceTicketComponent,
     ModalServiceTicketComponent,
+    ModalVehicleComponent,
+    ModalVehicleEditComponent,
   ],
   imports: [CommonModule, LayoutRoutingModule, SharedModule],
 })

@@ -6,7 +6,6 @@ import { enviroment } from '../../enviroments/enviroment';
 import { ResponseApi } from '../Interfaces/response-api';
 import { Venta } from '../Interfaces/venta';
 import { ServiceTicket } from '../Interfaces/service-ticket';
-import { ContactInfo } from '../Interfaces/contact-info';
 @Injectable({
   providedIn: 'root',
 })
@@ -18,6 +17,11 @@ export class ServiceTicketService {
   registrar(request: ServiceTicket): Observable<ResponseApi> {
     return this.http.post<ResponseApi>(`${this.urlApi}Registrar`, request);
   }
+
+  lista(): Observable<ResponseApi> {
+    return this.http.get<ResponseApi>(`${this.urlApi}Lista`);
+  }
+
   /*
   historial(
     buscarPor: string,

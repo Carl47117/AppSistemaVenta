@@ -6,7 +6,7 @@
       <mat-grid-tile>
         <mat-form-field appearance="outline">
           <mat-label>Nombre</mat-label>
-          <input matInput autocomplete="off" formControlName="nombre" />
+          <input matInput autocomplete="off" formControlName="name" />
           <mat-icon matSuffix>fit_screen</mat-icon>
         </mat-form-field>
       </mat-grid-tile>
@@ -14,12 +14,12 @@
       <mat-grid-tile>
         <mat-form-field appearance="outline">
           <mat-label>Categoria</mat-label>
-          <mat-select formControlName="idCategoria">
+          <mat-select formControlName="IdProductCategory">
             <mat-option
               *ngFor="let item of listaCategorias"
-              [value]="item.idCategoria"
+              [value]="item.IdProductCategory"
             >
-              {{ item.nombre }}
+              {{ item.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -48,7 +48,7 @@
       <mat-grid-tile>
         <mat-form-field appearance="outline">
           <mat-label>Estado</mat-label>
-          <mat-select formControlName="esActivo">
+          <mat-select formControlName="Active">
             <mat-option value="1">Activo</mat-option>
             <mat-option value="0">No activo</mat-option>
           </mat-select>
