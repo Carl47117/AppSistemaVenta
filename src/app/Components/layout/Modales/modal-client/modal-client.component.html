@@ -1,0 +1,71 @@
+<h2 mat-dialog-title>{{ tituloAccion }} Client</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="formClient">
+    <mat-grid-list cols="1" rowHeight="80px">
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput autocomplete="off" formControlName="firstName" />
+          <mat-icon matSuffix>account-box</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Surname</mat-label>
+          <input matInput autocomplete="off" formControlName="lastName" />
+          <mat-icon matSuffix>account-box</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Client Identification</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            formControlName="clientIdentification"
+          />
+          <mat-icon matSuffix>account-box</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input matInput autocomplete="off" formControlName="phoneNumber" />
+          <mat-icon matSuffix>account-box</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput autocomplete="off" formControlName="emailAddress" />
+          <mat-icon matSuffix>emailAddress</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Physical Address</mat-label>
+          <input
+            matInput
+            autocomplete="off"
+            formControlName="physicalAddress"
+          />
+          <mat-icon matSuffix>physicalAddress</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="formClient.invalid"
+    (click)="createModifyClientInfo()"
+  >
+    {{ buttonAccion }}
+  </button>
+</mat-dialog-actions>

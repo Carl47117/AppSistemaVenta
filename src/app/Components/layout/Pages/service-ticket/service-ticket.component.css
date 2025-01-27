@@ -1,7 +1,7 @@
-table {
+mat-form-field {
   width: 100%;
+  margin: 10px 10px;
 }
-
-table {
-  width: 100%;
+form {
+  width: 450px;
 }

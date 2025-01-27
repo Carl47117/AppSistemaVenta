@@ -75,7 +75,7 @@ export class ModalVehicleComponent implements OnInit {
       .open(ModalVehicleEditComponent, {
         data: _venta,
         disableClose: true,
-        width: '1200px',
+        width: '500px',
       })
       .afterClosed()
       .subscribe((resultado) => {
@@ -88,7 +88,7 @@ export class ModalVehicleComponent implements OnInit {
       .open(ModalVehicleEditComponent, {
         data: _venta,
         disableClose: true,
-        width: '1200px',
+        width: '500px',
       })
       .afterClosed()
       .subscribe((resultado) => {

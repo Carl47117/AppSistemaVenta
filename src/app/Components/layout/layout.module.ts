@@ -12,10 +12,12 @@ import { SharedModule } from '../../Reutilizable/shared/shared.module';
 import { ModalUsuarioComponent } from './Modales/modal-usuario/modal-usuario.component';
 import { ModalProductoComponent } from './Modales/modal-producto/modal-producto.component';
 import { ModalDetalleVentaComponent } from './Modales/modal-detalle-venta/modal-detalle-venta.component';
-import { ServiceTicketComponent } from './Pages/service-ticket/service-ticket.component';
-import { ModalServiceTicketComponent } from './Modales/modal-service-ticket/modal-service-ticket.component';
+import { ClientComponent } from './Pages/client/client.component';
+import { ModalClientComponent } from './Modales/modal-client/modal-client.component';
 import { ModalVehicleComponent } from './Modales/modal-vehicle/modal-vehicle.component';
 import { ModalVehicleEditComponent } from './Modales/modal-vehicle-edit/modal-vehicle-edit.component';
+import { ModalServiceTicketComponent } from './Modales/modal-service-ticket/modal-service-ticket.component';
+import { ServiceTicketComponent } from './Pages/service-ticket/service-ticket.component';
 
 @NgModule({
   declarations: [
@@ -28,10 +30,12 @@ import { ModalVehicleEditComponent } from './Modales/modal-vehicle-edit/modal-ve
     ModalUsuarioComponent,
     ModalProductoComponent,
     ModalDetalleVentaComponent,
-    ServiceTicketComponent,
-    ModalServiceTicketComponent,
+    ClientComponent,
+    ModalClientComponent,
     ModalVehicleComponent,
     ModalVehicleEditComponent,
+    ModalServiceTicketComponent,
+    ServiceTicketComponent,
   ],
   imports: [CommonModule, LayoutRoutingModule, SharedModule],
 })
